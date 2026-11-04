@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Super Virgil Odyssey | ¡Cumple 4 Años! • 30 de Noviembre 10:00 AM</title>
-  <meta name="description" content="¡Aventura Super Mario Odyssey! Virgil Alexander cumple 4 años el 30 de Noviembre a las 10:00 AM en Instituto Anglo (2° de Kínder). ¡No llevar lunch!" />
+  <meta name="description"
+    content="¡Aventura Super Mario Odyssey! Virgil Alexander cumple 4 años el 30 de Noviembre a las 10:00 AM en Instituto Anglo (2° de Kínder). ¡No llevar lunch!" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --odyssey-red: #e60012;
@@ -27,7 +32,8 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
       min-height: 100dvh;
       background: radial-gradient(circle at 50% 15%, #1e293b 0%, #060911 100%);
@@ -56,6 +62,7 @@
       body {
         padding: 12px 0;
       }
+
       .odyssey-phone {
         min-height: calc(100dvh - 24px);
         border-radius: 34px;
@@ -91,13 +98,11 @@
     .stage-vignette {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(8, 15, 32, 0.62) 0%,
-        rgba(8, 15, 32, 0.12) 32%,
-        rgba(8, 15, 32, 0.0) 68%,
-        rgba(8, 15, 32, 0.35) 100%
-      );
+      background: linear-gradient(180deg,
+          rgba(8, 15, 32, 0.62) 0%,
+          rgba(8, 15, 32, 0.12) 32%,
+          rgba(8, 15, 32, 0.0) 68%,
+          rgba(8, 15, 32, 0.35) 100%);
       pointer-events: none;
       z-index: 2;
     }
@@ -116,8 +121,15 @@
     }
 
     @keyframes shipFloat {
-      0%, 100% { transform: translate3d(0, 0, 0) rotate(-2deg); }
-      50% { transform: translate3d(0, -10px, 0) rotate(2deg); }
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) rotate(-2deg);
+      }
+
+      50% {
+        transform: translate3d(0, -10px, 0) rotate(2deg);
+      }
     }
 
     /* ================= TOP HUD OVERLAY ================= */
@@ -237,7 +249,7 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
     }
 
     .hud-btn.pass-btn {
@@ -332,7 +344,7 @@
       padding: 2px 9px;
       border-radius: 999px;
       white-space: nowrap;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.45);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
       pointer-events: none;
     }
 
@@ -351,7 +363,7 @@
     }
 
     .question-block-entity.opened .qblock-img {
-      filter: brightness(0.75) saturate(0.6) drop-shadow(0 5px 10px rgba(0,0,0,0.4));
+      filter: brightness(0.75) saturate(0.6) drop-shadow(0 5px 10px rgba(0, 0, 0, 0.4));
     }
 
     /* Floating Official 3D Power Moon when unlocked */
@@ -375,8 +387,13 @@
     }
 
     @keyframes moonHover {
-      from { transform: translateY(0) scale(1); }
-      to { transform: translateY(-7px) scale(1.08); }
+      from {
+        transform: translateY(0) scale(1);
+      }
+
+      to {
+        transform: translateY(-7px) scale(1.08);
+      }
     }
 
     /* ================= OFFICIAL 3D MARIO & CAPPY SPRITES ================= */
@@ -445,7 +462,7 @@
       height: auto;
       z-index: 8;
       pointer-events: none;
-      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.45));
+      filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45));
     }
 
     .warp-pipe-right {
@@ -456,7 +473,7 @@
       height: auto;
       z-index: 8;
       pointer-events: none;
-      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.45));
+      filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45));
     }
 
     .brick-ground {
@@ -518,8 +535,13 @@
     }
 
     @keyframes spinMoonToast {
-      from { transform: rotate(-10deg) scale(0.95); }
-      to { transform: rotate(10deg) scale(1.08); }
+      from {
+        transform: rotate(-10deg) scale(0.95);
+      }
+
+      to {
+        transform: rotate(10deg) scale(1.08);
+      }
     }
 
     .moon-toast-kicker {
@@ -574,7 +596,8 @@
       touch-action: manipulation;
     }
 
-    .btn-dir:active, .btn-dir.pressed {
+    .btn-dir:active,
+    .btn-dir.pressed {
       transform: translateY(3px);
       box-shadow: 0 1px 0 #050811;
     }
@@ -610,7 +633,8 @@
       object-fit: contain;
     }
 
-    .btn-cappy-throw:active, .btn-cappy-throw.pressed {
+    .btn-cappy-throw:active,
+    .btn-cappy-throw.pressed {
       transform: translateY(3px);
       box-shadow: 0 1px 0 #610007;
     }
@@ -633,7 +657,8 @@
       touch-action: manipulation;
     }
 
-    .btn-mario-jump:active, .btn-mario-jump.pressed {
+    .btn-mario-jump:active,
+    .btn-mario-jump.pressed {
       transform: translateY(3px);
       box-shadow: 0 1px 0 #78350f;
     }
@@ -734,7 +759,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.4));
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
     }
 
     .card-content {
@@ -790,8 +815,15 @@
     }
 
     @keyframes popInModal {
-      from { opacity: 0; transform: scale(0.88); }
-      to { opacity: 1; transform: scale(1); }
+      from {
+        opacity: 0;
+        transform: scale(0.88);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .odyssey-invite-card {
@@ -819,7 +851,7 @@
       width: 78px;
       height: 88px;
       object-fit: contain;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.45));
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.45));
       flex-shrink: 0;
     }
 
@@ -845,7 +877,7 @@
       font-size: 23px;
       font-weight: 800;
       line-height: 1.08;
-      text-shadow: 0 2px 0 rgba(0,0,0,0.35);
+      text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
     }
 
     .invite-sub {
@@ -937,6 +969,7 @@
     }
   </style>
 </head>
+
 <body>
   <main class="odyssey-phone">
     <!-- ================= GAME STAGE WITH 100% OFFICIAL SUPER MARIO ODYSSEY ASSETS ================= -->
@@ -1183,15 +1216,15 @@
             const aud = new Audio(src);
             aud.preload = 'auto';
             this.audioClips[key] = aud;
-          } catch (e) {}
+          } catch (e) { }
         }
 
         try {
-          this.bgm = new Audio('assets/audio/mario_theme.mp3');
+          this.bgm = new Audio('assets/audio/level_complete.mp3');
           this.bgm.loop = true;
           this.bgm.volume = 0.35;
           this.bgm.preload = 'auto';
-        } catch (e) {}
+        } catch (e) { }
       }
 
       playClip(key, volume = 0.7) {
@@ -1202,8 +1235,8 @@
             const clone = clip.cloneNode();
             clone.volume = volume;
             const p = clone.play();
-            if (p !== undefined) p.catch(() => {});
-          } catch (e) {}
+            if (p !== undefined) p.catch(() => { });
+          } catch (e) { }
         }
       }
 
@@ -1215,7 +1248,7 @@
           p.then(() => {
             this.bgmPlaying = true;
             this.bgmStarted = true;
-          }).catch(() => {});
+          }).catch(() => { });
         }
       }
 
@@ -1959,7 +1992,7 @@
         }
       } else {
         if (sfx.enabled && sfx.bgm && sfx.bgmPlaying) {
-          sfx.bgm.play().catch(() => {});
+          sfx.bgm.play().catch(() => { });
         }
       }
     });
@@ -1998,4 +2031,5 @@
     });
   </script>
 </body>
+
 </html>
