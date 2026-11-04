@@ -1237,10 +1237,23 @@
         }
 
         try {
-          this.bgm = new Audio('assets/audio/mario_theme.mp3');
-          this.bgm.loop = true;
+          this.bgm = new Audio('assets/audio/level_complete.mp3');
           this.bgm.volume = 0.35;
           this.bgm.preload = 'auto';
+
+          // Reiniciar en bucle exacto al llegar al segundo 31
+          setInterval(() => {
+            if (this.bgm && this.bgmPlaying && this.bgm.currentTime >= 31) {
+              this.bgm.currentTime = 0;
+            }
+          }, 50);
+
+          this.bgm.addEventListener('ended', () => {
+            if (this.enabled && this.bgmPlaying) {
+              this.bgm.currentTime = 0;
+              this.bgm.play().catch(() => { });
+            }
+          });
         } catch (e) { }
       }
 
