@@ -1187,7 +1187,7 @@
         }
 
         try {
-          this.bgm = new Audio('assets/audio/mario_theme.mp3');
+          this.bgm = new Audio('assets/audio/odyssey_bigband.mp3');
           this.bgm.loop = true;
           this.bgm.volume = 0.35;
           this.bgm.preload = 'auto';
@@ -1876,14 +1876,72 @@
       btnSound.textContent = isEnabled ? '🔊 ON' : '🔇 OFF';
     });
 
+    function resetAllBoxes() {
+      allUnlocked = false;
+
+      const initialTags = ['1. FECHA', '2. LUGAR', '3. LUNCH'];
+      const initialCards = [
+        { title: '¿Cuándo es el festejo?', sub: 'Toca aquí o golpea el Bloque 1' },
+        { title: '¿Dónde lo celebraremos?', sub: 'Toca aquí o golpea el Bloque 2' },
+        { title: 'Aviso especial sobre el lunch', sub: 'Toca aquí o golpea el Bloque 3' }
+      ];
+
+      blocks.forEach((b, idx) => {
+        b.opened = false;
+        b.bounceY = 0;
+        b.bounceVel = 0;
+        b.el.classList.remove('opened');
+        if (b.tagEl) b.tagEl.textContent = initialTags[idx];
+
+        // Reset HUD Moon slot
+        const hudSlot = document.getElementById(`hud-moon-${b.id}`);
+        if (hudSlot) {
+          hudSlot.classList.remove('unlocked');
+          hudSlot.classList.add('locked');
+        }
+
+        // Reset brochure card
+        const card = document.getElementById(`card-${b.id}`);
+        if (card) {
+          card.classList.remove('unlocked', 'lunch-card');
+          card.classList.add('locked');
+        }
+
+        const cardImg = document.getElementById(`card-img-${b.id}`);
+        if (cardImg) cardImg.src = 'assets/question_block.png';
+
+        const cardTitle = document.getElementById(`card-title-${b.id}`);
+        if (cardTitle) cardTitle.textContent = initialCards[idx].title;
+
+        const cardSub = document.getElementById(`card-sub-${b.id}`);
+        if (cardSub) cardSub.textContent = initialCards[idx].sub;
+      });
+
+      const prog = document.getElementById('progressLabel');
+      if (prog) prog.textContent = 'TOCA UN BLOQUE [?] O LANZA A CAPPY (1/4)';
+    }
+
     const inviteModal = document.getElementById('inviteModal');
+
+    function closeInvitation() {
+      inviteModal.classList.remove('show');
+      // Si se completaron las cajitas, reiniciarlas para que se pueda volver a jugar
+      const openedCount = blocks.filter(b => b.opened).length;
+      if (openedCount === blocks.length) {
+        resetAllBoxes();
+      }
+      // La música continúa sonando en bucle sin ninguna interrupción
+    }
+
     document.getElementById('btnOpenInvite').addEventListener('click', () => {
       sfx.unlock();
       sfx.hereWeGo();
       inviteModal.classList.add('show');
     });
-    document.getElementById('btnCloseInvite').addEventListener('click', () => {
-      inviteModal.classList.remove('show');
+
+    document.getElementById('btnCloseInvite').addEventListener('click', closeInvitation);
+    inviteModal.addEventListener('click', (e) => {
+      if (e.target === inviteModal) closeInvitation();
     });
 
     // Start background music & unlock audio on first touch/interaction
