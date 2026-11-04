@@ -956,7 +956,7 @@
 
     .btn-close-invite {
       width: 100%;
-      padding: 12px;
+      padding: 12px 18px;
       border-radius: 999px;
       border: none;
       background: linear-gradient(180deg, #e60012 0%, #99000d 100%);
@@ -966,6 +966,22 @@
       font-weight: 800;
       box-shadow: 0 5px 0 #610007;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform 0.12s;
+    }
+
+    .btn-close-invite:active {
+      transform: scale(0.97);
+    }
+
+    .btn-close-invite img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
     }
   </style>
 </head>
@@ -1178,7 +1194,8 @@
         </div>
 
         <button class="btn-close-invite" id="btnCloseInvite" type="button">
-          🧢 ¡Volver al Juego!
+          <img src="assets/cappy_cap.png" alt="Cappy" />
+          <span>¡Volver al Juego!</span>
         </button>
       </div>
     </div>
@@ -1220,7 +1237,7 @@
         }
 
         try {
-          this.bgm = new Audio('assets/audio/level_complete.mp3');
+          this.bgm = new Audio('assets/audio/mario_theme.mp3');
           this.bgm.loop = true;
           this.bgm.volume = 0.35;
           this.bgm.preload = 'auto';
@@ -1977,12 +1994,21 @@
       if (e.target === inviteModal) closeInvitation();
     });
 
-    // Start background music & unlock audio on first touch/interaction
-    const onFirstUserAction = () => {
+    // Iniciar música inmediatamente al cargar la página o con cualquier toque/interacción mínima
+    const unlockAndPlayImmediate = () => {
       sfx.unlock();
+      sfx.startBgm();
     };
-    window.addEventListener('pointerdown', onFirstUserAction, { once: true });
-    window.addEventListener('keydown', onFirstUserAction, { once: true });
+
+    // Intentar inicio automático inmediato al cargar
+    sfx.startBgm();
+    window.addEventListener('load', () => sfx.startBgm());
+
+    // Respaldar con el primer gesto en cualquier parte de la pantalla (sin esperar a mover a Mario)
+    ['pointerdown', 'touchstart', 'click', 'scroll', 'keydown', 'mousemove', 'wheel'].forEach(evt => {
+      window.addEventListener(evt, unlockAndPlayImmediate, { once: true, passive: true });
+      document.addEventListener(evt, unlockAndPlayImmediate, { once: true, passive: true });
+    });
 
     // Auto-pause music when leaving the browser, changing tabs, or locking screen
     document.addEventListener('visibilitychange', () => {
