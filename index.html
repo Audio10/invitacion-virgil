@@ -1140,8 +1140,8 @@
         </div>
 
         <div class="invite-no-lunch">
-          <strong>🍕 ¡AVISO IMPORTANTE: NO LLEVAR LUNCH! 🎂</strong>
-          <p>Por favor <u>NO LLEVAR LUNCH</u> ese día.<br>¡Habrá comida deliciosa, pastel y diversión para todos los compañeritos!</p>
+          <strong>🍕 ¡MISIÓN ESPECIAL: NO LLEVAR LUNCH! 🎂</strong>
+          <p>Habrá comida deliciosa, pastel y sorpresas para todos los compañeritos.</p>
         </div>
 
         <button class="btn-close-invite" id="btnCloseInvite" type="button">
@@ -1187,7 +1187,7 @@
         }
 
         try {
-          this.bgm = new Audio('assets/audio/odyssey_bigband.mp3');
+          this.bgm = new Audio('assets/audio/mario_theme.mp3');
           this.bgm.loop = true;
           this.bgm.volume = 0.35;
           this.bgm.preload = 'auto';
@@ -1950,6 +1950,25 @@
     };
     window.addEventListener('pointerdown', onFirstUserAction, { once: true });
     window.addEventListener('keydown', onFirstUserAction, { once: true });
+
+    // Auto-pause music when leaving the browser, changing tabs, or locking screen
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (sfx.bgm && sfx.bgmPlaying) {
+          sfx.bgm.pause();
+        }
+      } else {
+        if (sfx.enabled && sfx.bgm && sfx.bgmPlaying) {
+          sfx.bgm.play().catch(() => {});
+        }
+      }
+    });
+
+    window.addEventListener('pagehide', () => {
+      if (sfx.bgm) {
+        sfx.bgm.pause();
+      }
+    });
 
     // Keyboard Support
     window.addEventListener('keydown', (e) => {
